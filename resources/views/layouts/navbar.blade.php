@@ -17,7 +17,7 @@
                     </a>
                     <ul class="dropdown-menu isi-dropdown" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item  {{ ($title === "PROFIL" ) ? 'active bg-dark' : '' }}" href="/profile">Profil</a></li>
-                        <li><a class="dropdown-item  {{ ($title === "TIM" ) ? 'active bg-dark' : '' }}" href="/team">Tim</a></li>
+                        {{-- <li><a class="dropdown-item  {{ ($title === "TIM" ) ? 'active bg-dark' : '' }}" href="/team">Tim</a></li> --}}
                         <li><a class="dropdown-item  {{ ($title === "FASE KERJA" ) ? 'active bg-dark' : '' }}" href="/work-phase">Fase Kerja</a></li>
                         <li><a class="dropdown-item  {{ ($title === "LINGKUP PEKERJAAN" ) ? 'active bg-dark' : '' }}" href="/scope-of-work">Lingkup Pekerjaan</a></li>
                         <li><a class="dropdown-item  {{ ($title === "RUANG PERTANYAAN" ) ? 'active bg-dark' : '' }}" href="/faq">Ruang Pertanyaan</a></li>

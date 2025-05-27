@@ -15,12 +15,11 @@ return new class extends Migration
     {
         Schema::create('portfolios', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('judul_produk');
+            $table->foreignId('id_service')->nullable()->constrained('services')->onDelete('set null');
+            $table->string('judul_portfolio');
             $table->string('slug');
             $table->string('gambar');
-            $table->string('lokasi');
-            $table->string('nama_kategori');
-            $table->string('client');
+            $table->longText('deskripsi');
             $table->timestamps();
         });
     }

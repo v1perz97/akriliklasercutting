@@ -14,22 +14,37 @@ class PortfolioController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {      	
-      	$title = 'HASIL KERJA';      	
-        $huruftimbul = Portfolio::where('nama_kategori', 'huruf timbul')->get();
-        $neon = Portfolio::where('nama_kategori', 'neon box')->get();
-        $reklame = Portfolio::where('nama_kategori', 'papan reklame')->get();
-        $digital = Portfolio::where('nama_kategori', 'digital creative')->get();
-        $iot = Portfolio::where('nama_kategori', 'iot')->get();
-      	$akrilik = Portfolio::where('nama_kategori' , 'akrilik')->get();
-        
-        $search = Portfolio::latest();
-		if(request('search')) {
-            $search->where('judul_produk', 'like', '%' . request('search') . '%')->orWhere('nama_kategori', 'like', '%' . request('search') . '%');
-        }
-      	$portfolio = $search->get();
-        return view('home.portfolio', ['title' => $title, 'portfolio' => $portfolio, 'huruftimbul' => $huruftimbul, 'neon' => $neon, 'reklame' => $reklame, 'digital' => $digital, 'iot' => $iot, 'akrilik' => $akrilik]);
+{
+    $title = 'HASIL KERJA';
+
+    $huruftimbul = Portfolio::where('nama_kategori', 'huruf timbul')->get();
+    $neon = Portfolio::where('nama_kategori', 'neon box')->get();
+    $reklame = Portfolio::where('nama_kategori', 'papan reklame')->get();
+    $digital = Portfolio::where('nama_kategori', 'digital creative')->get();
+    $iot = Portfolio::where('nama_kategori', 'iot')->get();
+    $akrilik = Portfolio::where('nama_kategori', 'akrilik')->get();
+
+    $search = Portfolio::latest();
+
+    if (request('search')) {
+        $search->where('judul_produk', 'like', '%' . request('search') . '%')
+               ->orWhere('nama_kategori', 'like', '%' . request('search') . '%');
     }
+
+    $portfolio = $search->get();
+
+    return view('home.portfolio', compact(
+        'title',
+        'portfolio',
+        'huruftimbul',
+        'neon',
+        'reklame',
+        'digital',
+        'iot',
+        'akrilik'
+    ));
+}
+
 
     /**
      * Show the form for creating a new resource.

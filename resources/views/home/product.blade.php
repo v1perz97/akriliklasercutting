@@ -9,6 +9,25 @@
 </div> -->
 <div  style="border-top: 10px solid black;"></div>
 <div class="container">
+    <div class="pt-3">
+                <div class="row row-cols-1 row-cols-md-3 g-4">
+                    @foreach ($products as $products)
+                    <div class="col" data-aos="fade-down" data-aos-duration="1000">
+                        <div class="h-100 border-0">
+                            <img src={{$products->gambar}} class="card-img-top" id="gambar" alt="...">
+                            <div class="card-body mt-3">
+                                <h5 class="card-title">{{ $products->nama_produk }}</h5>
+                                <p class="card-text">{!! \Illuminate\Support\Str::limit($products->deskripsi, 60, '...') !!}</p>
+                              	<a href="/products/{{ $products->slug }}" class="btn btn-dark" id="button">Lebih lanjut</a>
+                            </div>
+                        </div>
+                    </div>
+                    @endforeach
+                </div>
+          </div>
+        </div>
+</div>
+{{-- <div class="container">
     <div class="row isi-header">
         <!-- <div class="col-md-6">
             <img src="/img/product/GP.png" class="header-produk pb-4" alt="GP">
@@ -308,5 +327,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @stop

@@ -45,27 +45,7 @@
             <h1>Tentang Akrilik Laser Cutting</h1>
         </div>
         <div class="py-3 article" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
-            <p>
-                <b>CV. Mekar Cutting Digital</b> adalah perusahaan Advertising dan Digital Marketing yang berbasis di
-                kota
-                Purbalingga.
-                <b>CV. Mekar Cutting Digital</b> sudah berpengalaman dan memiliki ratusan portfolio dalam bidang
-                periklanan,
-                promosi dan branding
-                selama lebih dari 5 tahun. Spesialis Jasa Pembuatan Reklame Huruf Timbul, Neon Box, Baliho dan Branding
-                instansi yang selalu mengutamakan
-                kualitas dan mengedepankan professionalisme kerja serta berkomitmen memberikan harga yang realistis bagi
-                klien. Selain produksi Reklame, <b>CV. Mekar Cutting Digital</b> juga melayani kebutuhan Digital
-                Marketing
-                sebagai solusi pemasaran digital. Kami menawarkan beberapa macam kebutuhan akan jasa digital marketing
-                antara lain, pembuatan website, optimasi website, audit dan analisa website / social media, pengelolaan
-                social media, foto produk, pembuatan logo, personal / politik branding. <b>CV. Mekar Cutting Digital</b>
-                adalah One Stop Solutions yang tepat untuk membangun Branding produk atau usaha Anda, menciptakan
-                strategi
-                pemasaran baik offline maupun online. Suatu kebanggaan tersendiri bagi kami untuk membantu bisnis anda
-                tumbuh dan berkembang di era digital. Membantu mendapatkan lebih banyak leads dari trafik, Memenangkan
-                penghargaan atas pekerjaan dan sumber daya kami selama ini.
-            </p>
+            {!! Str::before($profil['deskripsi'], '</p>') . '</p>' !!}
         </div>
     </article>
     <article>
@@ -76,13 +56,13 @@
         <div class="py-3 text-justify" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
             <div class="row row-cols-1 row-cols-md-3 g-4">
                 @foreach ($services as $services)
-                <div class="col">
+                <div class="col card">
                     <div class="h-100 border-0">
-                        <img src="/img/services/{{ $services->gambar }}" class="card-img-top" id="gambar" alt="...">
+                        <img src="{{ $services->gambar }}" class="card-img-top" id="gambar" alt="...">
                         <div class="card-body mt-3">
                             <h5 class="card-title">{{ $services->judul_service }}</h5>
-                            <p class="card-text">{{ \Illuminate\Support\Str::limit($services->kutipan, 60, '...') }}</p>
-                            <a href="/services/{{ $services->id }}" class="btn btn-dark" id="button">Lebih lanjut</a>
+                            <p class="card-text">{!! \Illuminate\Support\Str::limit($services->deskripsi, 60, '...') !!}</p>
+                            <a href="/services/{{ $services->slug }}" class="btn btn-dark" id="button">Lebih lanjut</a>
                         </div>
                     </div>
                 </div>
@@ -99,26 +79,28 @@
         </div>
         <div class="py-5 container text-justify">
             <div class="row row-cols-1 row-cols-md-3 g-4">
+                @if ($portfolio)
+                @foreach ($portfolio as $p)
                 <div class="col-md-4">
-                    <div class="image-box1">
-                        <img src="/img/portfolio/3.png" alt="Foto Bali" width="540" height="548" />
-                        <div class="overlayinn1">
-                            <h2>FOTO <span>BALI</span></h2>
-                            <p>Huruf Timbul</p>
+                    <div class="card bg-black text-white border-0 h-100 image-box1 position-relative equal-box" style="height: 250px; object-fit: cover; width: 100%;">
+                        <img src="{{ $p->gambar }}" alt="Foto Bali">
+
+                        <div class="overlay overlay-1 d-flex flex-column justify-content-center align-items-center text-white text-center">
+                            <div class="overlayinn1">
+                                <h2>{{ $p->judul_portfolio }}</h2>
+                                {{-- <p>Huruf Timbul</p> --}}
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="image-box2">
-                        <img src="/img/portfolio/neonbox.jpg" alt="NeonBox" width="540" height="548" />
-                        <div class="overlayinn2">
-                            <h2><span>NEONBOX</span></h2>
-                            <p>NeonBox</p>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+                @else
+                <p>Baca tentang proyek terbaru kami</p>
+                @endif
+
             </div>
         </div>
+
     </article>
     <article>
         <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
@@ -138,7 +120,7 @@
         </div>
     </article>
 
-    <div class="bg-light mt-3">
+    {{-- <div class="bg-light mt-3">
         <article data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
             <div id="judul">
                 <h3 class="headline">Galeri</h3>
@@ -183,51 +165,36 @@
                 </div>
             </div>
         </article>
-    </div>
+    </div> --}}
 </div>
 <div class="container py-3">
     <article>
         <div id="judul" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
-            <h3 class="headline">Mengapa Memilih Kami?</h3>
-            <p>Alasan untuk memilih kami</p>
+            <h3 class="headline">Our Online Shop</h3>
+            {{-- <p>Alasan untuk memilih kami</p> --}}
         </div>
         <div class="py-5 article" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="300">
-            <p>
-                Apabila bisnis adalah hal utama bagi Anda, hal yang perlu dilakukan adalah fokus dan allout dalam
-                mempromosikannya. Dengan menggunakan jasa kami produk dan tempat usaha akan lebih sering dilirik oleh
-                masyarakat.</p>
-
-            <p><b>Manfaat Jasa Online Advertising</b></p>
-
-            <p>1. Kami berkomitmen untuk membantu dan melayani kebutuhan advertising Anda, semua dikerjakan secara
-                online. Tanpa perlu datang dan menunggu yang membuang waktu, tanpa mengeluarkan biaya transportasi.
-                Cukup hubungi kami, kami yang akan mengerjakan semua.</p>
-
-            <p>2. Memiliki Daya Tarik Bagi Konsumen.
-                Produk Advertising digunakan sebagai identitas yang penempatannya bisa ditempat, digantung dll. Namun
-                sangat efektif untuk memikat konsumen yang lewat di sekitarnya. Hal ini dikarenakan kemewahan dan
-                keistimewaan pada produk advertising akan memberikan kesan tersendiri bagi konsumen yang melihatnya.</p>
-
-            <p>3. Branding menjadi mudah dibaca dan lebih jelas.
-                Melakukan iklan usaha melalui produk advertising akan lebih mudah terlihat dan jelas dibaca, misalnya
-                menggunakan huruf timbul. Karena huruf timbul menggunakan huruf yang besar, tegas, dan menonjol.
-                Terlebih jika pada huruf timbul diberi efek lampu LED akan semakin memudahkan khalayak umum
-                mengetahuinya. Dari sinilah konsumen bisa saja berdatangan untuk mencoba produk atau jasa yang
-                ditawarkan oleh usaha tersebut.</p>
-
-            <p>4. Nama perusahaan mudah diingat dan semakin terkenal.
-                Dengan keahlian desain yang kami miliki, kami akan membantu Anda membuat produk yang menarik sehingga
-                khalayak umum akan mudah melihat dan mengingatnya. Masyarakat yang melihatnya lama kelamaan akan
-                familiar dengan logo atau brand dari huruf timbul perusahaan tersebut dan menjadi terkenal.</p>
-
-            <p>5. Media promosi jangka panjang.
-                Produk advertising akan terpasang di depan tempat usaha dan menjadi media promosi jangka panjang yang
-                tepat. Dengan membuat signage di Mekar Laser Cutting Digital, kami selalu membuat dari bahan yang
-                berkualitas dan mudah dalam perawatannya, sehingga signage Anda akan lebih tahan lama.</p>
-
-            <p>6. Membuat tempat usaha / kantor mudah dicari
-                Sudah barang tentu dengan menggunakan produk advertising tempat usaha dan kantor Anda lebih mudah dicari
-                oleh masyarakat.</p>
+            <div class="container">
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+                    @foreach ($sosmed as $s)
+                        <div class="col">
+                            <a href="{{ $s->url }}" target="_blank" class="text-decoration-none text-dark">
+                                <div class="card h-100 shadow-sm border-0 hover-shadow">
+                                    <div class="card-body d-flex align-items-center">
+                                        <img src="{{ $s->icon }}" alt="{{ $s->name }} Logo" class="me-3 rounded" width="40" height="40">
+                                        <div>
+                                            <h5 class="card-title mb-0">{{ $s->name }}</h5>
+                                            @if($s->url)
+                                                <small class="text-muted">{{ $s->url }}</small>
+                                            @endif
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
         </div>
     </article>
 </div>

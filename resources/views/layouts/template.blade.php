@@ -36,7 +36,7 @@
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PBWQWTS"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-  
+
     @include('layouts.navbar')
     @yield('content')
 
@@ -53,36 +53,10 @@
                     <h5>LAYANAN</h5>
                     <ul class="list-unstyled style-a">
                         <li class="mb-2 mt-3">
-                            Pembuatan Website                         
+                            <div id="services">Memuat..</div>
+                            {{-- Pembuatan Website --}}
                         </li>
                         <hr>
-                        <li class="mb-2">                            
-                                Pembuatan Neon Box                            
-                        </li>
-                        <hr>
-                        <li class="mb-2">                            
-                                Pembuatan Huruf Timbul                            
-                        </li>                        
-                      <hr>
-                      <li class="mb-2">                            
-                                Pembuatan Prototype IOT                            
-                        </li>                        
-                      <hr>
-                      <li class="mb-2">                            
-                                Pembuatan Papan Reklame                            
-                        </li>
-                      <hr>
-                      <li class="mb-2">
-                         Pembuatan Papan Akrilik
-                      </li>
-                      <hr>
-                      <li class="mb-2">
-                         Pembuatan Aplikasi Kasir
-                      </li>
-                      <hr>
-                      <li class="mb-2">
-                         Pembuatan Running Text
-                      </li>
                     </ul>
                 </div>
                 <div class="col-12 col-lg-3 mb-3 text-dark">
@@ -90,7 +64,7 @@
                     <h5>LINK BERMANFAAT</h5>
                     <ul class="list-unstyled style-a">
                         <li class="mb-2"><a href="/portfolio" class="nav-link">Hasil Kerja</a></li>
-                        <li class="mb-2"><a href="/profile" class="nav-link">Tentang Kami</a></li>                       
+                        <li class="mb-2"><a href="/profile" class="nav-link">Tentang Kami</a></li>
                         <li class="mb-2"><a href="/workphase" class="nav-link">Bagaimana cara pesan?</a></li>
                         <li class="mb-2"><a href="/faq" class="nav-link">Ruang Pertanyaan</a></li>
                         <li class="mb-2"><a href="/privacy-policy" class="nav-link">Kebijakan dan Privacy</a></li>
@@ -102,7 +76,7 @@
                     <h5>Mitra</h5>
                     <ul class="list-unstyled style-a">
                         <li class="mb-2"><a href="#" class="nav-link">Bima Helm</a></li>
-                        <li class="mb-2"><a href="#" class="nav-link">FCS PROJECT</a></li>
+                        <li class="mb-2"><a href="#" class="nav-link">Softdev Community</a></li>
                     </ul>
                 </div>
             </div>
@@ -110,7 +84,7 @@
     </footer>
 
     <footer class="m-3 text-center">
-        <strong>Copyright &copy 2022 by CV. Mekar Cutting Digital</strong>
+        <strong>Copyright &copy {{ now()->format('Y') }} by CV. Mekar Cutting Digital</strong>
     </footer>
 
     <script src="/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -144,6 +118,28 @@
             document.body.scrollTop = 0; // For Safari
             document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         }
+
+
+        // Ambil data dari API
+        fetch('/api/get-services')
+            .then(response => response.json())
+            .then(data => {
+                const layanan = document.getElementById('services');
+                layanan.innerHTML = ''; // Kosongkan dulu
+
+                data.forEach(layanan => {
+                    const layananDiv = document.createElement('div');
+                    layananDiv.className = 'layanan';
+                    layananDiv.innerHTML = `
+                        ${layanan.judul_service}<br>
+                    `;
+                    services.appendChild(layananDiv);
+                });
+            })
+            .catch(error => {
+                document.getElementById('services').innerText = 'Gagal mengambil data.';
+                console.error('Terjadi kesalahan:', error);
+            });
     </script>
     <script src="/javascript/animation.js"></script>
     <script src="/javascript/search.js"></script>
@@ -152,7 +148,7 @@
             once: false
         });
     </script>
-  	
+
 </body>
 
 </html>

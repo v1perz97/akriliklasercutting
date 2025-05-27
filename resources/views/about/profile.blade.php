@@ -10,7 +10,7 @@
 </div>
 <div class="container">
     <!--<div class="profile-p"> -->
-    <article class="article-1 article">
+    {{-- <article class="article-1 article">
         <p> <b>CV. Mekar Cutting Digital</b> adalah perusahaan Advertising dan Digital Marketing yang berbasis di
             kota Purbalingga.
             <b>CV. Mekar Cutting Digital</b> sudah berpengalaman dan memiliki ratusan portfolio dalam bidang
@@ -41,7 +41,7 @@
             daerah Jawa Tengah, Banyumas, Purwokerto, dan Purbalingga.</p>
     </article>
     <article class="article-4">
-      
+
       <p><h3 class="fw-bold">Visi & Misi Mekar Cutting Digital</h3></p>
         <div class="row justify-content-center">
           <div class="col-sm-4">
@@ -49,7 +49,7 @@
               <div class="card-body">
                 <h5 class="card-title text-center">VISI</h5>
                 <p class="card-text">Menjadi perusahaan dalam bidang Costum Creative yang terbaik dengan mengedepankan semangat kreatif dan
-                        inovatif</p>        
+                        inovatif</p>
               </div>
             </div>
           </div>
@@ -65,11 +65,11 @@
                       <li>Menciptakan suasana yang baik dalam bekerja, sebagai kebanggaan dalam bekerja.</li>
                       <li>Memberikan kontribusi dan peningkatan nilai bagi masyarakat sekitar </li>
                   </ol>
-                </p>        
+                </p>
               </div>
             </div>
           </div>
-        </div>                
+        </div>
     </article>
     <article class="article-5 pt-2">
         <p>
@@ -125,8 +125,11 @@
                     </div>
                 </div>
             </div>
+            =============================================================================== --}}
+                {!! $profil->deskripsi !!}
         </div>
         </article>
+
 <!--</div>-->
 </div>
 

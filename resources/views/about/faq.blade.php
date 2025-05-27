@@ -13,126 +13,31 @@
         <div class="col-md-9">
             <article>
                 <p>
-                <h3 class="fw-bold judul-header1">Pertanyaan Seputar Advertising</h3>
-                <div class="accordion accordion-flush pt-3" id="accordionFlushExample">
-                    <div class="animasi1">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingOne">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                                    Apakah Mekar Cutting Digital dapat dipercaya?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    Tentu saja kami dapat dipercaya, Insya Allah kami amanah. Kami
-                                    tidak akan menyia-nyiakan reputasi kami selama 2 tahun sebagai perusahaan
-                                    Advertising
-                                    yang berkembang di Purbalingga. Mekar Laser Cutting Digital juga memiliki legalitas
-                                    dan
-                                    izin usaha
-                                    bidang Advertising dan Periklanan yang tercatat di Kementerian Hukum dan HAM atas
-                                    nama
-                                    CV. Mekar Cutting Digital.
+                    {{-- <h3 class="fw-bold pt-1 judul-header2">Pertanyaan Seputar Digital Creative</h3> --}}
+                    <div class="accordion accordion-flush" id="accordionCreative">
+                        @foreach ($faqs as $index => $faq)
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="creative-heading-{{ $index }}">
+                                    <button class="accordion-button collapsed" type="button"
+                                        data-bs-toggle="collapse"
+                                        data-bs-target="#creative-collapse-{{ $index }}"
+                                        aria-expanded="false"
+                                        aria-controls="creative-collapse-{{ $index }}">
+                                        {{ $faq['pertanyaan'] }}
+                                    </button>
+                                </h2>
+                                <div id="creative-collapse-{{ $index }}"
+                                    class="accordion-collapse collapse"
+                                    aria-labelledby="creative-heading-{{ $index }}"
+                                    data-bs-parent="#accordionCreative">
+                                    <div class="accordion-body">
+                                        {!! $faq['jawaban'] !!}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                                    Dimana alamat kantor dan workshop Mekar Laser Cutting Digital?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    JL. Lingkar Purbalingga
-                                </div>
-                            </div>
-                        </div>                      
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                                    Hal apa saja yang dikerjakan?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    Kami biasa mengerjakan reklame pembuatan huruf timbul, neon box,
-                                    pylon sign, neon sign, dll. Selain itu kami juga biasa mengerjakan pembuatan
-                                    aplikasi web dan dekstop.
-                                </div>
-                            </div>
-                        </div>
-                      	<div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingFourth">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFourth" aria-expanded="false" aria-controls="flush-collapseFourth">
-                                    Bolehkah saya melihat daftar harga barang dan produk Mekar Laser Cutting Digital?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFourth" class="accordion-collapse collapse" aria-labelledby="flush-headingFourth" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    Sangat boleh, daftar harga bisa dilihat di bagian halaman <a href="/produk">Produk</a> atau juga di bagian <a href="/services">Layanan</a> untuk bisa tau pelayanan yang kita suguhkan
-                                </div>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
-                </div>
-            </article>
-            <article>
-                <p>
-                <h3 class="fw-bold pt-3 judul-header2">Pertanyaan
-                    Seputar Digital Creative</h3>
-                <div class="accordion accordion-flush pt-3" id="accordionFlushExample">
-                    <div class="animasi2">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
-                                    Apa itu Digital Creative Agency?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    Pengertian digital creative agency adalah agen baik perorangan atau perusahaan
-                                    sebagai
-                                    pihak ketiga yang membantu klien untuk membuat, merancang, dan mengelola kegiatan
-                                    pemasaran digital.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingFive">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
-                                    Apa aja sih yang bisa Mekar Laser Team lakukan?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    Kami sebagai perusahaan Advertising yang bergerak dalam industri kreatif pada
-                                    dasarnya
-                                    bisa melakukan apapun, mulai dari Pembuatan Branding Logo Usaha, Pembuatan dan
-                                    Pengelolaan Website (Website Development).
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="flush-headingSix">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseSix" aria-expanded="false" aria-controls="flush-collapseSix">
-                                    Siapa saja yang butuh Jasa Digital Marketing?
-                                </button>
-                            </h2>
-                            <div id="flush-collapseSix" class="accordion-collapse collapse" aria-labelledby="flush-headingSix" data-bs-parent="#accordionFlushExample">
-                                <div class="accordion-body">
-                                    Mulai dari pengusaha, pebisnis, perusahaan, umkm, ukm, startup & siapa saja yang
-                                    ingin
-                                    memasarkan produk/brand nya secara online. Mulai dari yang ingin mendapatkan trafik
-                                    &
-                                    mendapatkan leads dari digital marketing, branding hingga mengoptimalkan penjualan
-                                    suatu
-                                    produk.Tentunya harus diimbangi dengan keyakinan dan kerja keras.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
             </article>
         </div>
         <div class="col-md-3">
@@ -142,13 +47,9 @@
                 <br>
                 <div class="social pb-3">
                     <div class="row pt-4 icon-aside">
-                        <a href="#" class="nav-link"><i class="fa-brands fa-youtube-square"></i></a>
-                        &nbsp;
-                        <a class="nav-link" href="#"><i class="fa-brands fa-facebook-square"></i></a>
-                        &nbsp;
-                        <a class="nav-link" href="#"><i class="fa-brands fa-instagram-square"></i></a>
-                        &nbsp;
-                        <a class="nav-link" href="#"><i class="fa-brands fa-twitter-square"></i></a>
+                        @foreach ($social as $s)
+                        <a href={{$s->url}} class="nav-link"><img src={{$s->icon}} width="40" height="40" /></a>&nbsp;
+                        @endforeach
                     </div>
                 </div>
             </div>

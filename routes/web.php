@@ -6,9 +6,11 @@ use App\Http\Controllers\PortfolioController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MailerController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 use App\Models\Services;
 use App\Models\Portfolio;
+use App\Models\Product;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,10 +25,8 @@ use App\Models\Portfolio;
 Route::get('/', [HomeController::class, 'index']);
 
 Route::get('/services', [HomeController::class, 'services']);
-Route::resource('/services', ServicesController::class);
 
 Route::get('/portfolio', [HomeController::class, 'portfolio']);
-Route::resource('/portfolio', PortfolioController::class);
 
 Route::get('/talk', [HomeController::class, 'talk']);
 Route::post('/talk/send-mail/', [MailerController::class, 'sendMail']);
@@ -39,18 +39,27 @@ Route::get('/product', [HomeController::class, 'product']);
 // Route::resource('/blog', BlogController::class);
 
 //route learn more services
-Route::get('/services/{id}', function($id) {
-	return view('services.detail-services', [	
+Route::get('/services/{slug}', function($slug) {
+	return view('services.detail-services', [
       	'title' => 'Layanan',
-		'services' => Services::find($id)
+		'services' => Services::where('slug', $slug)->first(),
+        'contact' => Contact::all(),
 	]);
 });
 
 //route learn more portfolio
-Route::get('/portfolio/{id}', function($id) {
-	return view('portfolio.detail-portfolio', [	
-      	'title' => 'Hasil Kerja',
-		'portfolio' => Portfolio::find($id)
+Route::get('/portfolio/{slug}', function ($slug) {
+    return view('portfolio.detail-portfolio', [
+        'title' => 'Hasil Kerja',
+        'portfolio' => Portfolio::where('slug', $slug)->first(),
+    ]);
+});
+
+//route learn more services
+Route::get('/products/{slug}', function($slug) {
+	return view('products.detail-products', [
+      	'title' => 'Product',
+		'product' => Product::where('slug', $slug)->first()
 	]);
 });
 

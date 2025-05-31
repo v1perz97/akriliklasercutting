@@ -4,12 +4,15 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\ProductResource\Pages;
 use App\Filament\Resources\ProductResource\RelationManagers;
+use App\Models\Category;
 use App\Models\Product;
+use App\Models\SubCategory;
 use CloudinaryLabs\CloudinaryLaravel\Facades\Cloudinary;
 use Filament\Forms;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\RichEditor;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Resources\Form;
 use Filament\Resources\Resource;
@@ -31,6 +34,8 @@ class ProductResource extends Resource
         return $form
             ->schema([
                 TextInput::make('nama_produk')->required(),
+                Select::make('category_id')->label('Kategori')->options(Category::pluck('nama', 'id')->toArray()),
+                Select::make('subcategory_id')->label('Sub Kategori')->options(SubCategory::pluck('nama', 'id')->toArray()),
                 FileUpload::make('gambar')
                 ->label('Gambar')
                 ->image()

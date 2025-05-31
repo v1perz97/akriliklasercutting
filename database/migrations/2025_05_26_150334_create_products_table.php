@@ -19,6 +19,8 @@ class CreateProductsTable extends Migration
             $table->string('slug');
             $table->longText('deskripsi');
             $table->string('gambar');
+            $table->foreignId('category_id')->constrained('categories')->onDelete('set null');
+            $table->foreignId('subcategory_id')->constrained('sub_categories')->onDelete('set null');
             $table->timestamps();
         });
     }

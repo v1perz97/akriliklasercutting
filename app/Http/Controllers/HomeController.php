@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\About;
+use App\Models\Category;
 use App\Models\Contact;
 use App\Models\Faq;
 use Illuminate\Http\Request;
@@ -114,6 +115,18 @@ class HomeController extends Controller
     public function getServices()
     {
         $data = Services::select('judul_service', 'slug')->get();
+        return response()->json($data);
+    }
+
+    public function category($nama)
+    {
+        $data = Product::with('category', 'subcategory')
+    ->whereHas('category', function ($query) use ($nama) {
+        $query->where('nama', $nama);
+    })
+    ->get();
+
+
         return response()->json($data);
     }
 }

@@ -63,6 +63,8 @@ Route::get('/products/{slug}', function($slug) {
 	]);
 });
 
+Route::get('/product/category/{nama}', [HomeController::class, 'category']);
+
 //Route::get('/detail/{id}', 'ServicesController@detail');
 
 

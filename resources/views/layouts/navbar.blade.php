@@ -1,3 +1,7 @@
+@php
+$data = App\Models\Category::get();
+@endphp
+
 <nav class="navbar navbar-expand-lg bg-light sticky-top">
     <div class="container">
         <a class="navbar-brand" href="#">
@@ -23,8 +27,16 @@
                         <li><a class="dropdown-item  {{ ($title === "RUANG PERTANYAAN" ) ? 'active bg-dark' : '' }}" href="/faq">Ruang Pertanyaan</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ ($title === "PRODUK" ) ? 'active text-danger' : '' }}" href="/product">Produk</a>
+                <li class="nav-item dropdown">
+                    {{-- <a class="nav-link {{ ($title === "PRODUK" ) ? 'active text-danger' : '' }}" href="/product">Produk</a> --}}
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        PRODUK
+                    </a>
+                    <ul class="dropdown-menu isi-dropdown" aria-labelledby="navbarDropdown">
+                        @foreach ($data as $d)
+                        <li><a class="dropdown-item  {{ ($title === "" ) ? 'active bg-dark' : '' }}" href="/product/category/{{$d->nama}}">{{$d->nama}}</a></li>
+                        @endforeach
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ ($title === "LAYANAN" ) ? 'active text-danger' : '' }}" href="/services">Layanan</a>
